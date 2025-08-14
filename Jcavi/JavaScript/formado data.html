@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formato da data</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script>
+        function formatoUS(){
+            let databrasil=document.getElementById("databr").value
+            let quebrado= databrasil.split("/")
+            let datausa=quebrado[2]+"-"+quebrado[1]+"-"+quebrado[0]
+            document.getElementById("databr").value=datausa
+            document.getElementById("btnus").hidden=true
+            document.getElementById("btnbr").hidden=false
+        }
+        function formatoBR(){
+            let dataamericano=document.getElementById("databr").value
+            let quebrado= dataamericano.split("-")
+            databrasil=quebrado[2]+"/"+quebrado[1]+"/"+quebrado[0]
+            document.getElementById("databr").value=databrasil
+            document.getElementById("btnbr").hidden=true
+            document.getElementById("btnus").hidden=false
+        }
+        function esconder(){
+            document.getElementById("btnbr").hidden=true
+        }
+    </script>
+</head>
+<body onload="return esconder()">
+    Insira uma data no formato BR: <input type="text" id="databr"><br>
+    <input type="button" value="formato US" onclick="return formatoUS()" id="btnus">
+    <input type="button" value="formato BR" onclick="return formatoBR()" id="btnbr"> 
+</body>
+</html>

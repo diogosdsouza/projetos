@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>média</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<style>
+    body{font: 13pt arial;}
+    h1{font-family: cursive;}
+    #botao{font: 13pt arial; padding: 20px;}
+</style>
+<body>
+    <h1>Calculando...</h1>
+    <input type="button" value="calcular" onclick="começar()" id="botao">
+    <p><div id="res">Clique no botão para começar</div></p>
+    <script>
+        let res= document.getElementById('res')
+        function começar(){
+            let nota1=parseFloat(prompt("Digite a nota 1: "))
+            let nota2=parseFloat(prompt("Digite a nota 2: "))
+            let nota3=parseFloat(prompt("Digite a nota 3: "))
+            media=(nota1+nota2+nota3)/3
+            res.innerHTML=`A média é ${media}`
+            if(media>=7){
+                res.innerHTML+=`<p>O aluno está APROVADO</p>`
+            } else if(media<7){
+                res.innerHTML+=`<p>O aluno está REPROVADO</p>`
+            }
+        }
+    </script>
+</body>
+</html>

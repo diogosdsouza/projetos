@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>leitura e escrita de um vetor</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        let funcionarios=new Array()
+        quantidade=parseInt(prompt("Digite quantos funcionários tem a empresa: "))
+        for(let i=0;i<quantidade;i++){
+            funcionarios[i]=prompt("Digite o nome do funcionário: ")
+        }
+        document.write("Lista de funcionários: <br>")
+        for(let j=0;j<quantidade;j++){
+            document.write(funcionarios[j],"<br>")
+        }
+    </script>
+</body>
+</html>
