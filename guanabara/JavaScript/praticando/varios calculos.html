@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vários calculos</title>
+</head>
+<style>
+    body{
+        font: 12pt arial;
+    }
+    input{
+        font-size: 12pt;
+        padding: 30px;
+    }
+</style>
+<body>
+    <h1>Vários cálculos em JS</h1>
+    <input type="button" value="Clique para calcular" onclick="calcular()">
+    <p><div id="res">O resultado vai aparecer aqui...</div></p>
+    <script>
+        var res = document.getElementById('res')
+        function calcular(){
+            var n = Number(prompt('Digite um número:'))
+            res.innerHTML = `O número a ser analisado será o <strong>${n}</strong>`
+            res.innerHTML +=
+            `<p>O seu valor absoluto é ${n}</p>
+            <p>A sua parte inteira é ${Math.trunc(n)}</p>
+            <p>O valor inteiro mais próximo é ${Math.round(n)}</p>
+            <p>A sua raiz quadrada é ${Math.sqrt(n)}</p>
+            <p>A sua raiz cúbica é ${Math.cbrt(n)}</p>
+            <p>O valor de ${n}² é ${n*n}</p>
+            <p>O valor de ${n}³ é ${n*n*n}</p>`
+        }
+    </script>
+</body>
+</html>
