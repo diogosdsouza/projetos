@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>mediajcavi</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        let nome=prompt("Nome do aluno:")
+        let nota1=parseFloat(prompt("Digite a nota 1:"))
+        let nota2=parseFloat(prompt("Digite a nota 2:"))
+        let nota3=parseFloat(prompt("Digite a nota 3:"))
+        let frequencia= parseFloat(prompt("Digite a frequência do aluno:"))
+        media=(nota1+nota2+nota3)/3
+        if(media>=7 && frequencia>75){
+            document.write(nome," tem média ",media," e uma frequência de ",frequencia,"%, ele está APROVADO!")
+        }else if(media>=7){
+            document.write(nome," tem média ",media," e uma frequência de ",frequencia,"%, ele está REPROVADO por FREQUÊNCIA.")
+        }else if(frequencia>75){
+            document.write(nome," tem média ",media," e uma frequência de ",frequencia,"%, ele está REPROVADO por NOTA.")
+        }else if(media>=5 && frequencia>75){
+            document.write(nome," tem média ",media,", então está de RECUPERAÇÃO.")
+        }else if(media<7 && frequencia<75){
+            document.write(nome," tem média ",media," e uma frequencia de ",frequencia,"%, ele está REPROVADO!")
+        }
+    </script>
+</body>
+</html>

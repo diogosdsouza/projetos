@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contando</title>
+    <style>
+        body{
+            font: 13pt arial;
+        }
+        h1,h2{
+            font-family: cursive;
+        }
+        input{
+            font-size: 12pt;
+            padding: 3px;
+        }
+        input#b{
+            background-color: green;
+            color: white;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contando...</h1>
+    <p>Escolha o limite final para a contagem a partir do 0 (digite apenas números positivos).</p>
+    Valor final: <input type="number" name="" id="num">
+    <input type="button" value="Contar" id="b" onclick="contar()">
+    <p><div id="res">Preencha os dados acima e aperte o botâo.</div></p>
+    <script>
+        var res = document.getElementById('res')
+        function contar(){
+            var n = Number(document.getElementById('num').value)
+            res.innerHTML += `<h2>Contando de 0 até ${n}</h2>`
+            c = 0
+            for(n;c <= n; c++){
+            res.innerHTML += `${c} \u{1F449} `
+        }
+        res.innerHTML += `\u{1F3C1}`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando jQuery</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> <!-- adicionando o jquery ao código -->
+</head>
+<body>
+    <p id="p">Clique aqui para escrever</p>
+</body>
+
+<script type="text/javascript">
+$('#p').on('click', function(evento) {
+  //evento.preventDefault();  não permite que o evento ocorra
+    console.log('Parabéns, você escreveu!'); //a informação sai no Console do navegador
+});
+</script>
+</html>

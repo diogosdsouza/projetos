@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora do Dg</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 235px;
+            background-color: #4400ff; /* Cor de fundo azul */
+            color: white; /* Cor do texto */
+            display: grid;
+            grid-template-columns: repeat(4, 55px);
+            grid-gap: 5px;
+            margin-bottom: 20px;
+        }
+        .calculator input {
+            grid-column: span 4;
+            height: 40px;
+            border: none;
+            background-color: #333; /* Cor de fundo do visor */
+            color: white; /* Cor do texto do visor */
+            text-align: right;
+            padding-right: 10px;
+        }
+        .calculator button {
+            height: 55px;
+            background-color: #fff; /* Cor de fundo dos botões */
+            color: #333; /* Cor do texto dos botões */
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+        .calculator button.operation {
+            background-color: #acacac; /* Cor de fundo dos botões de operação */
+        }
+        .calculator button.equal {
+            background-color: #d1d1d1; /* Cor de fundo do botão de igual */
+        }
+        .calculator button:active {
+            background-color: #ccc; /* Cor de fundo dos botões ao serem clicados */
+        }
+        #history {
+            width: 235px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background-color: #333;
+            color: white;
+            overflow-y: auto;
+            padding: 5px;
+            font-family: 'Courier New', monospace;
+            white-space: pre; /* Respeita quebras de linha e espaços */
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <button onclick="press('AC')" class="operation">AC</button>
+        <button onclick="pressParenthesis()">()</button>
+        <button onclick="press('%')" class="operation">%</button>
+        <button onclick="press('/')" class="operation">/</button>
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('*')" class="operation">x</button>
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('-')" class="operation">-</button>
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('+')" class="operation">+</button>
+        <button onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button onclick="press('=')" class="equal">=</button>
+        <button onclick="backspace()">←</button>
+    </div>
+    <div id="history"></div>
+
+    <script>
+        function press(num) {
+            var display = document.getElementById('display');
+            if(num === 'AC') {
+                clearDisplay();
+            } else if(num === '=') {
+                calculate();
+            } else if(num === '←') {
+                backspace();
+            } else {
+                display.value += num;
+            }
+        }
+
+        function pressParenthesis() {
+            var display = document.getElementById('display');
+            var lastChar = display.value.slice(-1);
+            var secondLastChar = display.value.slice(-2, -1);
+            var openParentheses = (display.value.match(/\(/g) || []).length;
+            var closeParentheses = (display.value.match(/\)/g) || []).length;
+
+            // Se o visor estiver vazio ou o último caractere for um operador, insira '('
+            if (display.value === '' || '+-*/'.includes(lastChar)) {
+                display.value += '(';
+            } 
+            // Se o último caractere for um número e houver menos ')' do que '(', insira ')'
+            else if (!isNaN(parseFloat(lastChar)) && openParentheses > closeParentheses) {
+                display.value += ')';
+            }
+            // Se o último caractere for um número e o penúltimo for '(', insira '*' e '('
+            else if (!isNaN(parseFloat(lastChar))) {
+                display.value += '*(';
+            }
+            // Se o último caractere for um '(' e houver menos ')' do que '(', insira outro '('
+            else if (lastChar === '(' && openParentheses > closeParentheses) {
+                display.value += '(';
+            }
+            // Em todos os outros casos, insira ')'
+            else {
+                display.value += '(';
+            }
+        }
+
+        function calculate() {
+            var display = document.getElementById('display');
+            try {
+                var result = eval(display.value);
+                addToHistory(display.value + ' = ' + result);
+                display.value = result;
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            var display = document.getElementById('display');
+            display.value = display.value.substring(0, display.value.length - 1);
+        }
+
+        function addToHistory(calculation) {
+            var history = document.getElementById('history');
+            history.innerText += calculation + '\n'; // Adiciona uma quebra de linha após cada cálculo
+            history.scrollTop = history.scrollHeight;
+        }
+    </script>
+</body>
+</html>

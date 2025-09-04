@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        body{
+            font: 13pt arial;
+            background-color: rgb(240, 42, 91);
+        }
+        h1{
+            text-align: center;
+            color: white;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.404);
+        }
+        section{
+            background-color: white;
+            width: 550px;
+            margin: auto;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 5px rgb(36, 255, 7);
+        }
+        input{
+            font-size: 12pt;
+            padding: 4px;
+        }
+        footer{
+            font-style: italic;
+            text-align: center;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Tabuada</h1>
+    <section>
+    <div>Escreva um número na caixa a seguir e te mostrarei a tabuada dele.</div>
+    <p>Número: <input type="number" name="" id="n">
+    <input type="button" value="Tabuada" onclick=calcular()></p>
+    <div id="res">Preencha os dados acima e aperte o botão.</div>
+    </section>
+    <p><footer>&copy;Diogo Souza</footer></p>
+</body>
+<script>
+    let res = document.getElementById('res')
+    function calcular(){
+        var n = Number(document.getElementById('n').value)
+        res.innerHTML = `<h2>Tabuada de ${n}</h2>`
+        var c = 1
+        while (c<=10) {
+            res.innerHTML += `<p>${n} x ${c} = <strong>${n * c}</strong></p>`
+            c ++
+        }
+    }
+</script>
+</html>
